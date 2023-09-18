@@ -1,3 +1,4 @@
 django
 django-tinymce
 psycopg2-binary
+requests
