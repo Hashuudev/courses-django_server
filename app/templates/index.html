@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block main %}
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade container">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'site-images/4.jpg' %}" class="d-block w-100" alt="..." height="350" width="100">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'site-images/5.jpg' %}" class="d-block w-100" alt="..."  height="350" width="100">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'site-images/6.jpg' %}" class="d-block w-100" alt="..."  height="350" width="100">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+<h2 class="container text-center my-4">Recommended Courses</h2>
+
+<div class="container">
+  <div class="row">
+{% for i in all_courses %}
+    <div class="col-sm-6 my-2">
+      <div class="card">
+        <img height="400" width="50"
+          src="{{i.thumbnail.url}}"
+          class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{i.title}}</h5>
+          <p class="card-text">{{i.min_description}}</p>
+          <a href="{% url 'playlist' i.id %}" class="btn btn-dark fw-bold">Start Watching</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+{% endblock main %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block main %}
+
+{% comment %} <h2 class="container text-center my-4">Recommended Courses</h2> {% endcomment %}
+
+<div class="container">
+  <div class="row">
+{% for i in all_courses %}
+    <div class="col-sm-6 my-2">
+      <div class="card">
+        <img height="400" width="50"
+          src="{{i.thumbnail.url}}"
+          class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{i.title}}</h5>
+          <p class="card-text">{{i.min_description}}</p>
+          <a href="{% url 'watch-video' i.id %}" class="btn btn-dark fw-bold">Start Watching</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+{% endblock main %}

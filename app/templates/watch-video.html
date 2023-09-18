@@ -1,0 +1,67 @@
+
+{% extends 'base.html' %}
+
+
+
+
+
+{% block main %}
+
+
+
+<div class="container">
+  <div style="height: 50%;">
+    {{all_courses.video_link|safe}}
+  </div>
+<br>
+<br>
+<br>  
+<br>
+  <div class="container my-5">
+    <p class="">{{all_courses.description|safe}}</p>
+  </div>
+    
+
+
+
+
+
+
+
+
+
+<form action="{% url 'comment' %}" method="post">
+  <div class="mb-3">
+    {% csrf_token %}
+    <label for="exampleFormControlTextarea1" class="form-label">Comments</label>
+    <textarea class="form-control" name="comment" id="" rows="3"></textarea>
+    <input class="form-control" name="id" value="{{all_courses.id}}" type="hidden" id="" rows="3"/>
+    <button type="submit" class="btn-watch-html btn btn-dark my-3">Submit</button>
+  </div>
+</form>
+
+
+<h1>All Comments</h1>
+{% for i in all_comments %}
+  {% csrf_token %}
+<div class="container ">
+  <div class="card rounded-rounded border-black">
+    <div class="card-body border">
+      {{i.comments}}
+    </div>
+  </div>
+
+<a href="{% url 'delete-comment' i.id%}" class="btn-watch-html btn btn-dark my-2">Delete</a>
+</div>
+{% endfor %}
+
+    
+</div>
+
+  {% endblock main %}
+
+
+
+
+
+  
